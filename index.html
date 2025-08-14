@@ -1,188 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>COD Ranked Strats – Coming Soon</title>
-  <meta name="description" content="COD Ranked Strats: pro-level strategies, rotations, and playbooks. Black Ops 6 first, Warzone next. Support on Ko‑fi." />
-  <meta property="og:title" content="COD Ranked Strats – Coming Soon" />
-  <meta property="og:description" content="Black Ops 6 ranked strats first. Warzone next. Support on Ko‑fi." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { --ring: 0 0 0 4px rgba(14,165,233,.35); }
-    html, body { height: 100%; }
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
-    .glass { backdrop-filter: blur(12px); background: rgba(15, 23, 42, 0.6); }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COD Ranked Strats – Coming Soon</title>
+  <meta name="description" content="COD Ranked Strats: pro-level strategies, rotations, and playbooks. Black Ops 6 first, Warzone next. Support on Ko‑fi." />
+  <meta property="og:title" content="COD Ranked Strats – Coming Soon" />
+  <meta property="og:description" content="Black Ops 6 ranked strats first. Warzone next. Support on Ko‑fi." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="min-h-full bg-slate-950 text-slate-100 antialiased">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-800/50 bg-slate-950/70 backdrop-blur">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 font-extrabold tracking-tight text-sky-400 hover:text-sky-300">
-        <!-- Inline logo: simple crosshair -->
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="drop-shadow">
-          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span>COD Ranked Strats</span>
-      </a>
-      <nav class="hidden sm:flex items-center gap-6 text-sm">
-        <a class="hover:text-sky-300" href="#bo6">BO6 Guide First</a>
-        <a class="hover:text-sky-300" href="#warzone">Warzone Guide Next</a>
-        <a class="hover:text-sky-300" href="#donate">Donate</a>
-      </nav>
-    </div>
-  </header>
+<body>
+    <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-icon">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>COD Ranked Strats</span>
+      </a>
+      <nav class="header-nav">
+        <a class="nav-link" href="#bo6">BO6 Guide First</a>
+        <a class="nav-link" href="#warzone">Warzone Guide Next</a>
+        <a class="nav-link" href="#donate">Donate</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 opacity-40">
-      <svg aria-hidden="true" class="absolute -top-24 left-1/2 -translate-x-1/2" width="1600" height="800" viewBox="0 0 1600 800" fill="none">
-        <defs>
-          <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 200) rotate(90) scale(600 900)">
-            <stop stop-color="#38bdf8"/>
-            <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <rect width="1600" height="800" fill="url(#g)"></rect>
-      </svg>
-    </div>
-    <div class="mx-auto max-w-6xl px-4 py-20">
-      <div class="glass rounded-3xl border border-slate-800/60 p-8 md:p-12 shadow-2xl">
-        <p class="mb-3 inline-block rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1 text-xs text-slate-300">Coming Soon</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-          Pro-Level <span class="text-sky-400">Ranked Strats</span> for Call of Duty
-        </h1>
-        <p class="mt-4 text-lg text-slate-300">We’re launching with a guide for<span class="font-semibold text-slate-100">Black Ops 6 Ranked</span> first — maps, rotations, set plays, and comms scripts. <br class="hidden sm:block"/>Then we'll expand to <span class="font-semibold text-slate-100">Warzone</span>.</p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#notify" class="inline-flex items-center justify-center rounded-2xl bg-sky-500 px-5 py-3 font-semibold text-slate-950 shadow hover:bg-sky-400 focus:outline-none focus:[box-shadow:var(--ring)]">Notify me at launch</a>
-          <a href="#donate" class="inline-flex items-center justify-center rounded-2xl border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500 focus:outline-none focus:[box-shadow:var(--ring)]">Support on Ko‑fi</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="hero-section">
+    <div class="hero-bg">
+      <svg aria-hidden="true" class="hero-bg-svg" width="1600" height="800" viewBox="0 0 1600 800" fill="none">
+        <defs>
+          <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 200) rotate(90) scale(600 900)">
+            <stop stop-color="#38bdf8"/>
+            <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1600" height="800" fill="url(#g)"></rect>
+      </svg>
+    </div>
+    <div class="hero-content-container">
+      <div class="hero-card">
+        <p class="hero-tag">Coming Soon</p>
+        <h1 class="hero-heading">
+          Pro-Level <span class="hero-heading-highlight">Ranked Strats</span> for Call of Duty
+        </h1>
+        <p class="hero-description">We’re launching with a guide for<span class="hero-description-highlight">Black Ops 6 Ranked</span> first — maps, rotations, set plays, and comms scripts. <br class="br-small-hide"/>Then we'll expand to <span class="hero-description-highlight">Warzone</span>.</p>
+        <div class="hero-buttons">
+          <a href="#notify" class="button button-primary">Notify me at launch</a>
+          <a href="#donate" class="button button-secondary">Support on Ko‑fi</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Highlights -->
-  <section class="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-3 gap-6">
-    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-      <h3 class="text-xl font-bold">Map Playbooks</h3>
-      <p class="mt-2 text-slate-300">Hardpoint rotations, Control lanes, S&D set hits. Visual callouts and break plans.</p>
-    </div>
-    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-      <h3 class="text-xl font-bold">Roles & Comms</h3>
-      <p class="mt-2 text-slate-300">Anchor, Flex, Slayer, Support — with crisp comm scripts and reaction protocols.</p>
-    </div>
-    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-      <h3 class="text-xl font-bold">Meta Updates</h3>
-      <p class="mt-2 text-slate-300">Patch-ready tactics and loadout notes. We adapt as the meta shifts.</p>
-    </div>
-  </section>
+    <section class="highlights-section">
+    <div class="highlight-card">
+      <h3 class="highlight-title">Map Playbooks</h3>
+      <p class="highlight-text">Hardpoint rotations, Control lanes, S&D set hits. Visual callouts and break plans.</p>
+    </div>
+    <div class="highlight-card">
+      <h3 class="highlight-title">Roles & Comms</h3>
+      <p class="highlight-text">Anchor, Flex, Slayer, Support — with crisp comm scripts and reaction protocols.</p>
+    </div>
+    <div class="highlight-card">
+      <h3 class="highlight-title">Meta Updates</h3>
+      <p class="highlight-text">Patch-ready tactics and loadout notes. We adapt as the meta shifts.</p>
+    </div>
+  </section>
 
-  <!-- BO6 First -->
-  <section id="bo6" class="mx-auto max-w-6xl px-4 py-16">
-    <div class="flex flex-col md:flex-row items-start gap-8">
-      <div class="md:w-1/2">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Black Ops 6 <span class="text-sky-400">First</span></h2>
-        <p class="mt-4 text-slate-300">Coverage for BO6 Ranked: spawn systems, power positions, utility lineups, and break/hold frameworks like the <em>2‑1‑1 Pressure Split</em>. Built for teams that want consistent wins.</p>
-        <ul class="mt-6 space-y-2 text-slate-300 list-disc list-inside">
-          <li>Interactive map diagrams</li>
-          <li>Hardpoint & Control rotation planners</li>
-          <li>Search & Destroy set plays</li>
-        </ul>
-      </div>
-      <div class="md:w-1/2">
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-          <h3 class="font-bold">Sample Coming Soon</h3>
-          <p class="mt-2 text-slate-300">A clean, mobile-friendly guide layout with lane highlights, choke callouts, and recommended AR/SMG splits per map.</p>
-          <div class="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-            <div class="h-24 rounded-xl bg-gradient-to-br from-sky-500/30 to-slate-800/60"></div>
-            <div class="h-24 rounded-xl bg-gradient-to-br from-sky-500/30 to-slate-800/60"></div>
-            <div class="h-24 rounded-xl bg-gradient-to-br from-sky-500/30 to-slate-800/60"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="bo6" class="bo6-section">
+    <div class="bo6-content">
+      <div class="bo6-text">
+        <h2 class="section-heading">Black Ops 6 <span class="section-heading-highlight">First</span></h2>
+        <p class="section-text">Coverage for BO6 Ranked: spawn systems, power positions, utility lineups, and break/hold frameworks like the <em>2‑1‑1 Pressure Split</em>. Built for teams that want consistent wins.</p>
+        <ul class="list-bullets">
+          <li>Interactive map diagrams</li>
+          <li>Hardpoint & Control rotation planners</li>
+          <li>Search & Destroy set plays</li>
+        </ul>
+      </div>
+      <div class="bo6-image-container">
+        <div class="bo6-image-card">
+          <h3 class="bo6-image-title">Sample Coming Soon</h3>
+          <p class="bo6-image-text">A clean, mobile-friendly guide layout with lane highlights, choke callouts, and recommended AR/SMG splits per map.</p>
+          <div class="bo6-image-grid" aria-hidden="true">
+            <div class="placeholder-image"></div>
+            <div class="placeholder-image"></div>
+            <div class="placeholder-image"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Warzone Next -->
-  <section id="warzone" class="mx-auto max-w-6xl px-4 pb-16">
-    <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-8">
-      <h2 class="text-3xl md:text-4xl font-extrabold">Warzone <span class="text-sky-400">Next</span></h2>
-      <p class="mt-4 text-slate-300">Rotation pathing, circle reads, regain playbooks, and teamfight protocols. We’re building a tournament-grade knowledge base after BO6 launches.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1 text-sm">Regain Routes</span>
-        <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1 text-sm">Power Positions</span>
-        <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1 text-sm">Loadout Timing</span>
-        <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1 text-sm">Endgame Plays</span>
-      </div>
-    </div>
-  </section>
+    <section id="warzone" class="warzone-section">
+    <div class="warzone-card">
+      <h2 class="section-heading">Warzone <span class="section-heading-highlight">Next</span></h2>
+      <p class="section-text">Rotation pathing, circle reads, regain playbooks, and teamfight protocols. We’re building a tournament-grade knowledge base after BO6 launches.</p>
+      <div class="tag-group">
+        <span class="tag">Regain Routes</span>
+        <span class="tag">Power Positions</span>
+        <span class="tag">Loadout Timing</span>
+        <span class="tag">Endgame Plays</span>
+      </div>
+    </div>
+  </section>
 
-  <!-- Notify / Ko-fi -->
-  <section id="notify" class="mx-auto max-w-6xl px-4 pb-20">
-    <div class="grid gap-8 md:grid-cols-2">
-      <form class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6" onsubmit="subscribe(event)">
-        <h3 class="text-2xl font-extrabold">Get launch updates</h3>
-        <p class="mt-2 text-slate-300">Drop your email and we’ll ping you when the site goes live.</p>
-        <label class="sr-only" for="email">Email address</label>
-        <div class="mt-4 flex gap-2">
-          <input id="email" name="email" type="email" required placeholder="you@example.com" class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:[box-shadow:var(--ring)]" />
-          <button type="submit" class="shrink-0 rounded-2xl bg-sky-500 px-4 py-3 font-semibold text-slate-950 hover:bg-sky-400 focus:outline-none focus:[box-shadow:var(--ring)]">Notify me</button>
-        </div>
-        <p id="msg" class="mt-3 text-sm text-slate-400" role="status" aria-live="polite"></p>
-        <p class="mt-3 text-xs text-slate-500">We’ll never share your email. Local demo only — connect to your email provider later.</p>
-      </form>
+    <section id="notify" class="notify-section">
+    <div class="notify-grid">
+      <form class="form-card" onsubmit="subscribe(event)">
+        <h3 class="form-title">Get launch updates</h3>
+        <p class="form-text">Drop your email and we’ll ping you when the site goes live.</p>
+        <label class="sr-only" for="email">Email address</label>
+        <div class="form-field-group">
+          <input id="email" name="email" type="email" required placeholder="you@example.com" class="form-input" />
+          <button type="submit" class="button button-primary">Notify me</button>
+        </div>
+        <p id="msg" class="form-message" role="status" aria-live="polite"></p>
+        <p class="form-disclaimer">We’ll never share your email. Local demo only — connect to your email provider later.</p>
+      </form>
 
-      <div id="donate" class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
-        <h3 class="text-2xl font-extrabold">Support this project</h3>
-        <p class="mt-2 text-slate-300">Like the mission? You can donate to help fund hosting, graphics, and development time.</p>
-        <a href="https://ko-fi.com/TigerTy9" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-2xl bg-[#29abe0] px-5 py-3 font-semibold text-white hover:opacity-90 focus:outline-none focus:[box-shadow:var(--ring)]">
-          <!-- Ko-fi cup icon (simple) -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6a1 1 0 0 0-1 1v4a7 7 0 0 0 7 7h3a7 7 0 0 0 7-7V7a1 1 0 0 0-1-1H3zm16 2v3a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5V8h13z"/></svg>
-          <span>Donate on Ko‑fi</span>
-        </a>
-      </div>
-    </div>
-  </section>
+      <div id="donate" class="donate-card">
+        <h3 class="donate-title">Support this project</h3>
+        <p class="donate-text">Like the mission? You can donate to help fund hosting, graphics, and development time.</p>
+        <a href="https://ko-fi.com/TigerTy9" target="_blank" rel="noopener" class="kofi-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6a1 1 0 0 0-1 1v4a7 7 0 0 0 7 7h3a7 7 0 0 0 7-7V7a1 1 0 0 0-1-1H3zm16 2v3a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5V8h13z"/></svg>
+          <span>Donate on Ko‑fi</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800/60">
-    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-400">
-      <p class="font-semibold text-slate-300">Unofficial fan project. Not affiliated with Activision or Treyarch.</p>
-      <div class="mt-3 flex flex-wrap items-center gap-3">
-        <a class="hover:text-slate-200" href="#">Privacy</a>
-        <span aria-hidden="true">•</span>
-        <a class="hover:text-slate-200" href="#">Terms</a>
-        <span aria-hidden="true">•</span>
-        <span>© <span id="year"></span> COD Ranked Strats</span>
-      </div>
-    </div>
-  </footer>
+    <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-credit">Unofficial fan project. Not affiliated with Activision or Treyarch.</p>
+      <div class="footer-links">
+        <a class="footer-link" href="#">Privacy</a>
+        <span aria-hidden="true">•</span>
+        <a class="footer-link" href="#">Terms</a>
+        <span aria-hidden="true">•</span>
+        <span>© <span id="year"></span> COD Ranked Strats</span>
+      </div>
+    </div>
+  </footer>
 
-  <script>
-    // demo email capture
-    function subscribe(e){
-      e.preventDefault();
-      const input = document.getElementById('email');
-      const msg = document.getElementById('msg');
-      const email = input.value.trim();
-      if(!email){ msg.textContent = 'Please enter a valid email.'; return; }
-      try{
-        localStorage.setItem('launch_email', email);
-        msg.textContent = 'Thanks! We\'ll let you know when we launch.';
-        input.value='';
-      }catch(err){
-        msg.textContent = 'Saved locally. Connect a real email service for production.';
-      }
-    }
-    // dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>
+    // demo email capture
+    function subscribe(e){
+      e.preventDefault();
+      const input = document.getElementById('email');
+      const msg = document.getElementById('msg');
+      const email = input.value.trim();
+      if(!email){ msg.textContent = 'Please enter a valid email.'; return; }
+      try{
+        localStorage.setItem('launch_email', email);
+        msg.textContent = 'Thanks! We\'ll let you know when we launch.';
+        input.value='';
+      }catch(err){
+        msg.textContent = 'Saved locally. Connect a real email service for production.';
+      }
+    }
+    // dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
