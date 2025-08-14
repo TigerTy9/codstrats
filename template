@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BO6 Ranked Playbook</title>
+  <meta name="description" content="Black Ops 6 ranked strategies: map-by-map callouts, anchor/support roles, rotations, and break plans." />
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#121821; --muted:#9bb0c3; --text:#e6edf3; --accent:#65b7ff; --accent-2:#15e6ad; --bad:#ff758f; --good:#64f4aa; --warn:#ffd166;
+      --chip:#1a2330; --chip-b:#213044; --br:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(101,183,255,.08), transparent 50%),
+      radial-gradient(1000px 700px at -20% 120%, rgba(21,230,173,.06), transparent 50%), var(--bg);
+      color:var(--text); font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;}
+    header{position:sticky;top:0;z-index:5;background:rgba(11,15,20,.8);backdrop-filter: blur(8px);border-bottom:1px solid #1a2330}
+    .wrap{max-width:1200px;margin:0 auto;padding:18px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    h1{margin:0;font-size:26px;letter-spacing:.3px}
+    .muted{color:var(--muted)}
+    .bar{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:linear-gradient(180deg,var(--chip),var(--chip-b));border:1px solid #2a3952;color:var(--text);padding:10px 12px;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+    .chip input, .chip select{background:transparent;border:none;color:var(--text);outline:none}
+    .chip input::placeholder{color:#7e93a6}
+    button, .btn{background:linear-gradient(180deg,#142033,#0f1724);border:1px solid #2a3952;color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;box-shadow:var(--shadow);transition:.2s}
+    button:hover,.btn:hover{transform:translateY(-1px);border-color:#3b5579}
+
+    main{max-width:1200px;margin:18px auto;padding:0 18px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;background:linear-gradient(180deg,var(--panel),#0f151d);border:1px solid #1f2a3b;border-radius:var(--br);padding:18px;box-shadow:var(--shadow)}
+    @media(min-width:900px){.card{grid-column:span 6}}
+    .card h3{margin:0 0 8px}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid #2a3952;background:#121d2b;color:#9fd4ff;font-weight:600;letter-spacing:.3px;font-size:12px}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+    .kpi .pill{padding:6px 10px;background:#101826;border:1px solid #283850;border-radius:999px}
+    .meta{display:flex;align-items:center;gap:10px;color:#b9c7d6;font-size:13px}
+
+    details{border:1px solid #1f2a3b;border-radius:12px;overflow:hidden}
+    summary{cursor:pointer;padding:12px 14px;background:#0f1724;color:#dbe9f7;font-weight:600}
+    .content{padding:12px 14px;background:#0c1320}
+    ul{margin:8px 0 0 18px}
+    li{margin:6px 0}
+    code{background:#0d1a28;border:1px solid #203247;border-radius:6px;padding:2px 6px}
+    .two-col{display:grid;gap:12px}
+    @media(min-width:800px){.two-col{grid-template-columns:1fr 1fr}}
+
+    .foot{opacity:.8;font-size:13px;margin-top:24px}
+    .tag{padding:3px 8px;border:1px solid #2a3952;background:#0f1724;border-radius:999px;margin-right:6px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .hr{height:1px;background:#1a2330;margin:16px 0}
+
+    /* table for rotations */
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{border:1px solid #1f2a3b;padding:10px;text-align:left}
+    th{background:#0f1724}
+
+    .notice{border:1px dashed #2a3952;padding:10px;border-radius:12px;background:rgba(21,230,173,.06)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="row" style="align-items:center;justify-content:space-between">
+        <div>
+          <h1>BO6 Ranked Playbook</h1>
+          <div class="muted">Map-by-map strategies • Anchor/Support roles • Rotations • Break plans</div>
+        </div>
+        <div class="cta">
+          <button id="printBtn" title="Print or save as PDF">🖨️ Print</button>
+          <button id="shareBtn" title="Copy a shareable link with your current filters">🔗 Share</button>
+        </div>
+      </div>
+
+      <div class="bar">
+        <label class="chip">🔍 <input id="search" placeholder="Search maps, callouts, tips…" /></label>
+        <label class="chip">🎯 Mode
+          <select id="mode">
+            <option value="all">All</option>
+            <option>Hardpoint</option>
+            <option>Control</option>
+            <option>Search &amp; Destroy</option>
+          </select>
+        </label>
+        <label class="chip">🗺️ Map
+          <select id="map">
+            <option value="all">All</option>
+            <option>Protocol</option>
+            <option>Haven</option>
+            <option>Signal</option>
+            <option>Blitz</option>
+            <option>Skyline</option>
+          </select>
+        </label>
+        <label class="chip">🧰 Preset
+          <select id="preset">
+            <option value="default">Default (2 AR / 2 SMG)</option>
+            <option value="aggro">Aggro (1 AR / 3 SMG)</option>
+            <option value="lockdown">Lockdown (3 AR / 1 SMG)</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid" id="cards">
+
+      <!-- ===================== PROTOCOL ===================== -->
+      <article class="card" data-map="Protocol" data-mode="Hardpoint">
+        <div class="kpi">
+          <span class="badge">Protocol</span>
+          <span class="pill">Mode: Hardpoint</span>
+          <span class="pill">Suggested Comp: <strong>2 AR / 2 SMG</strong></span>
+        </div>
+        <h3>Protocol – Hardpoint: Anchor &amp; Support Blueprint</h3>
+        <div class="two-col">
+          <div>
+            <details open>
+              <summary>Anchor Setup</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Primary post:</strong> <em>Interrogation Room window</em> – holds sight to Artillery/Radio lanes; your spawn insurance.</li>
+                  <li><strong>Don’t ego-chow:</strong> stay alive; call <code>numbers + timing</code> (e.g., “2 pushing long in 5s”).</li>
+                  <li><strong>Rotate at -15s:</strong> float to next spawn block; never rotate last.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Support Role</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Position:</strong> HQ choke / upper catwalk to cover Anchor’s pinch.</li>
+                  <li><strong>Utility:</strong> Trophy on hill entry; stun/nade Interrogation pinch before breaks.</li>
+                  <li><strong>Trade first:</strong> pair with Slayer on entries; you take the first contact.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div>
+            <details open>
+              <summary>Break Plan (2-1-1 Pressure Split)</summary>
+              <div class="content">
+                <ol>
+                  <li><strong>Slayer + Support</strong>: hit weakest door with stuns → slide cancel entry.</li>
+                  <li><strong>Flex</strong>: pinch from mid; isolate a 2v1.</li>
+                  <li><strong>Anchor</strong>: hold cutoff so their reinforcements can’t reach.</li>
+                </ol>
+                <div class="notice">If you lose two quickly, <strong>full reset</strong> and hit together. Don’t feed streaks.</div>
+              </div>
+            </details>
+            <details>
+              <summary>Rotations &amp; Timings</summary>
+              <div class="content">
+                <table>
+                  <tr><th>When</th><th>Who</th><th>Action</th></tr>
+                  <tr><td>-25s</td><td>Flex</td><td>Leave scrap if even; take power heady for next hill.</td></tr>
+                  <tr><td>-18s</td><td>Anchor</td><td>Shift to spawn block; call if pinched.</td></tr>
+                  <tr><td>-10s</td><td>Slayer+Support</td><td>Last good break or cutoffs → rotate.</td></tr>
+                </table>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== HAVEN ===================== -->
+      <article class="card" data-map="Haven" data-mode="Hardpoint">
+        <div class="kpi">
+          <span class="badge">Haven</span>
+          <span class="pill">Mode: Hardpoint</span>
+          <span class="pill">Suggested Comp: <strong>2 AR / 2 SMG</strong></span>
+        </div>
+        <h3>Haven – Hardpoint: Mid Control &amp; Overpass Locks</h3>
+        <div class="two-col">
+          <div>
+            <details open>
+              <summary>Anchor Setup</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Primary post:</strong> Foyer (Gamma) sculpture heady. Back up to keep spawns safe.</li>
+                  <li><strong>Watch:</strong> Long Hall cross and Overpass swing. Prioritize survival.</li>
+                  <li><strong>Rotate:</strong> -15s to the next lobby corner to block flips.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Support Role</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Position:</strong> Overpass (Alpha) – control rotator lane w/ trophy.</li>
+                  <li><strong>Flash and funnel:</strong> Double-stun Long Hall; cue the pinch for Flex.</li>
+                  <li><strong>Trade discipline:</strong> Step in first; Slayer cleans.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div>
+            <details open>
+              <summary>Break Plan</summary>
+              <div class="content">
+                <ol>
+                  <li>Smoke Long Hall angle to cut an AR.</li>
+                  <li>Slayer+Support flood from Overpass; Flex pinches from Foyer stairs.</li>
+                  <li>Anchor holds back alley cutoff; do not enter hill unless 3 down.</li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>Rotations &amp; Timings</summary>
+              <div class="content">
+                <table>
+                  <tr><th>When</th><th>Who</th><th>Action</th></tr>
+                  <tr><td>-22s</td><td>Flex</td><td>Take next power heady; call numbers.</td></tr>
+                  <tr><td>-16s</td><td>Anchor</td><td>Block deep spawn; avoid chows.</td></tr>
+                  <tr><td>-9s</td><td>Team</td><td>Cutoffs > scrap; stabilize setup.</td></tr>
+                </table>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== SIGNAL ===================== -->
+      <article class="card" data-map="Signal" data-mode="Control">
+        <div class="kpi">
+          <span class="badge">Signal</span>
+          <span class="pill">Mode: Control</span>
+          <span class="pill">Suggested Comp: <strong>3 AR / 1 SMG (Defense)</strong></span>
+        </div>
+        <h3>Signal – Control: Defense Lock &amp; Fast Stack (Attack)</h3>
+        <div class="two-col">
+          <div>
+            <details open>
+              <summary>Defense Lock (Anchor/Support)</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Anchor:</strong> Console in Communication – denies Broadcast lane; live first, kill second.</li>
+                  <li><strong>Support:</strong> Sub top or catwalk – crossfire with Anchor; trophy down for rotates.</li>
+                  <li><strong>Win condition:</strong> Burn their lives; force long routes with crossfires.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Attack Fast Stack</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Open:</strong> Double-nade power heady → SMG slides in.</li>
+                  <li><strong>Stack:</strong> 3 on point for cap speed; 1 watches deep pinch.</li>
+                  <li><strong>Snowball:</strong> After 1 tick, Flex pinches spawn to stagger spawners.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div>
+            <details open>
+              <summary>Comms Scripts</summary>
+              <div class="content">
+                <ul>
+                  <li><code>Anchor:</code> “2 long broadcast in 3… holding. Need 1.”</li>
+                  <li><code>Support:</code> “Trophy down, one shot catwalk, trade me.”</li>
+                  <li><code>Flex:</code> “Pinching back spawn now, 5 seconds.”</li>
+                  <li><code>Slayer:</code> “Entry now, stun hit. I’m first contact.”</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Lives &amp; Utility Rules</summary>
+              <div class="content">
+                <ul>
+                  <li>Never re-hit solo on attack; wait 3 for a grouped break.</li>
+                  <li>Save one smoke for re-take; trophies on point, not in open.</li>
+                  <li>Count enemy tacs; call when they’re dry to time a break.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== BLITZ ===================== -->
+      <article class="card" data-map="Blitz" data-mode="Search & Destroy">
+        <div class="kpi">
+          <span class="badge">Blitz</span>
+          <span class="pill">Mode: Search &amp; Destroy</span>
+          <span class="pill">Suggested Comp: <strong>2 AR / 2 SMG</strong></span>
+        </div>
+        <h3>Blitz – S&amp;D: Default, Mid-Lurk, and Fast A</h3>
+        <div class="two-col">
+          <div>
+            <details open>
+              <summary>Default (Info First)</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>AR Anchor:</strong> Bridge center – watch cross; keep bomb safe.</li>
+                  <li><strong>Support:</strong> Waterfall cut – trade pick attempts; trophy for plant.</li>
+                  <li><strong>Flex:</strong> Mid-lurk for timing pick; don’t die early.</li>
+                  <li><strong>SMG Slayer:</strong> Late burst through cliff once info gained.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Fast A Hit</summary>
+              <div class="content">
+                <ol>
+                  <li>Double-tac the heady → smoke plant spot.</li>
+                  <li>Support plants for bridge view; Anchor covers cross.</li>
+                  <li>Post-plant triangle: Bridge / Cliff mini-heady / Waterfall box.</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+          <div>
+            <details open>
+              <summary>Defense Aggro Round</summary>
+              <div class="content">
+                <ul>
+                  <li>Flex quick-peeks mid; back off if no pick in 3s.</li>
+                  <li>Slayer takes a one-and-done angle then rotates – don’t stick.</li>
+                  <li>Anchor holds bridge off-angle to punish wide swings.</li>
+                </ul>
+                <div class="notice">Change pace every round; never run the same opener twice.</div>
+              </div>
+            </details>
+            <details>
+              <summary>Micro-Comms</summary>
+              <div class="content">
+                <ul>
+                  <li>Call <strong>numbers + location</strong>: “Two Cliff, bomb seen.”</li>
+                  <li>Say <strong>plan</strong> not hope: “Fake A, rotate 10s to B.”</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== SKYLINE (bonus hardpoint) ===================== -->
+      <article class="card" data-map="Skyline" data-mode="Hardpoint">
+        <div class="kpi">
+          <span class="badge">Skyline</span>
+          <span class="pill">Mode: Hardpoint</span>
+          <span class="pill">Suggested Comp: <strong>1 AR / 3 SMG (small map)</strong></span>
+        </div>
+        <h3>Skyline – Hardpoint: Close-Quarters Break Machine</h3>
+        <div class="two-col">
+          <div>
+            <details open>
+              <summary>Anchor Setup</summary>
+              <div class="content">
+                <ul>
+                  <li><strong>Primary post:</strong> P4 back patio – furthest back heady to hold spawns.</li>
+                  <li><strong>Rule:</strong> You are last in hill; play life first, kills second.</li>
+                  <li><strong>Rotate early:</strong> -18s to next back corner; call if pinched.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Support Role</summary>
+              <div class="content">
+                <ul>
+                  <li>Stack with Slayer for tight trades; never solo chow.</li>
+                  <li>Trophy on entry; flash deep for info before sliding.</li>
+                  <li>Cutoff duty when up 40+ points; don’t overextend.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div>
+            <details open>
+              <summary>Break Plan</summary>
+              <div class="content">
+                <ol>
+                  <li>Triple tac the choke; SMG duo double-slide.</li>
+                  <li>Flex hits late flank at 3s; Anchor holds cross.</li>
+                  <li>If first break fails → full 4-man rehit.</li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>Scoreline Rules</summary>
+              <div class="content">
+                <ul>
+                  <li>Down 60+: take risks and chain spawns; value snowball potential.</li>
+                  <li>Up 60+: play percentage; value cutoffs and life preservation.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="card">
+      <h3>Loadout &amp; Comp Presets</h3>
+      <p class="muted">Quick guidance for weapon splits. Adjust to enemy comp and map size.</p>
+      <table>
+        <tr><th>Preset</th><th>When to Use</th><th>Notes</th></tr>
+        <tr><td>Default: 2 AR / 2 SMG</td><td>Balanced maps and most Hardpoints</td><td>Anchor AR, Flex AR, SMG Slayer, SMG Support</td></tr>
+        <tr><td>Aggro: 1 AR / 3 SMG</td><td>Small/CQB maps; when losing close fights</td><td>Flex swaps to SMG; emphasize trades &amp; stuns</td></tr>
+        <tr><td>Lockdown: 3 AR / 1 SMG</td><td>Open maps; Control defense; winning long lanes</td><td>Flex to AR; SMG focuses info and pinches</td></tr>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3>Anchor &amp; Support Cheat Sheet</h3>
+      <div class="two-col">
+        <div>
+          <h4>Anchor – Rules</h4>
+          <ul>
+            <li>Live first, kill second. Your death flips maps.</li>
+            <li>Call <strong>numbers + timing</strong> (e.g., “2 long, 5s”) and ask for the <em>nearest help</em> (Flex).</li>
+            <li>Rotate at -15s unless spawn block is contested.</li>
+            <li>Don’t ego-chow power ARs; use off-angles.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support – Rules</h4>
+          <ul>
+            <li>Be with someone always; your value is trades.</li>
+            <li>Lead with utility (stuns/smokes); trophy down <em>before</em> you’re seen.</li>
+            <li>Reset if 2 dead; don’t feed streaks.</li>
+            <li>Own cutoffs on rotations; deny their reinforcements.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <h4>Micro-Call Templates</h4>
+      <ul>
+        <li><code>“Two my lane, 1 weak — 3s out. Need Flex.”</code></li>
+        <li><code>“Trophy down. I’m first contact, trade me on 3.”</code></li>
+        <li><code>“Smoke out long AR. Pinch in 5, go.”</code></li>
+      </ul>
+    </section>
+
+    <footer class="wrap foot">
+      <span class="tag">Made for teams who want free wins</span>
+      <span class="tag">Print-ready</span>
+      <span class="tag">Sharable filters</span>
+    </footer>
+  </main>
+
+  <script>
+    const els = {
+      search: document.getElementById('search'),
+      mode: document.getElementById('mode'),
+      map: document.getElementById('map'),
+      preset: document.getElementById('preset'),
+      cards: document.getElementById('cards'),
+      printBtn: document.getElementById('printBtn'),
+      shareBtn: document.getElementById('shareBtn')
+    };
+
+    // filter logic
+    function applyFilters(pushHash=true){
+      const q = els.search.value.trim().toLowerCase();
+      const mode = els.mode.value;
+      const map = els.map.value;
+      const cards = [...els.cards.children];
+      cards.forEach(card=>{
+        const text = card.innerText.toLowerCase();
+        const cMode = card.getAttribute('data-mode');
+        const cMap  = card.getAttribute('data-map');
+        const shown = (mode==='all'||mode===cMode) && (map==='all'||map===cMap) && (!q || text.includes(q));
+        card.style.display = shown? 'block':'none';
+      });
+      if(pushHash){
+        const params = new URLSearchParams({q,mode,map,preset:els.preset.value});
+        location.hash = params.toString();
+      }
+      // apply preset note highlight (visual only)
+      document.querySelectorAll('.kpi .pill strong').forEach(x=>{
+        const p = els.preset.value;
+        x.style.color = p==='aggro'? 'var(--warn)' : p==='lockdown'? 'var(--accent-2)' : 'var(--text)';
+      });
+    }
+
+    ['input','change'].forEach(ev=>{
+      els.search.addEventListener(ev, ()=>applyFilters());
+      els.mode.addEventListener(ev, ()=>applyFilters());
+      els.map.addEventListener(ev, ()=>applyFilters());
+      els.preset.addEventListener(ev, ()=>applyFilters());
+    });
+
+    // Print & Share
+    els.printBtn.addEventListener('click', ()=>window.print());
+    els.shareBtn.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(location.href).then(()=>{
+        els.shareBtn.textContent='✅ Copied link';
+        setTimeout(()=>els.shareBtn.textContent='🔗 Share', 1200);
+      });
+    });
+
+    // Hydrate from hash
+    (function init(){
+      const hash = location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(hash);
+      if(params.size){
+        els.search.value = params.get('q')||'';
+        els.mode.value   = params.get('mode')||'all';
+        els.map.value    = params.get('map')||'all';
+        els.preset.value = params.get('preset')||'default';
+      }
+      applyFilters(false);
+    })();
+  </script>
+</body>
+</html>
