@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skyline – BO6 Ranked Guide</title>
+  <meta name="description" content="Skyline guide for Black Ops 6 Ranked. Rotations, set plays, power positions, comms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="antialiased">
 
+<!-- Header -->
+<header class="sticky top-0 z-40 border-b border-slate-800/50 bg-slate-950/70 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-4 py-3 flex justify-between items-center">
+    <a href="/index.html" class="flex items-center gap-2 font-extrabold text-sky-400 hover:text-sky-300">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      COD Ranked Strats
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 opacity-40">
+    <svg aria-hidden="true" class="absolute -top-24 left-1/2 -translate-x-1/2" width="1600" height="800" viewBox="0 0 1600 800" fill="none">
+      <defs>
+        <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 200) rotate(90) scale(600 900)">
+          <stop stop-color="#38bdf8"/>
+          <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1600" height="800" fill="url(#g)"></rect>
+    </svg>
+  </div>
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <div class="glass rounded-3xl border border-slate-800/60 p-8 md:p-12 shadow-2xl">
+      <p class="mb-3 inline-block rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1 text-xs text-slate-300">Black Ops 6</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Skyline – <span class="text-sky-400">Ranked Guide</span></h1>
+      <p class="mt-4 text-lg text-slate-300">Rotations, power positions, and set plays for <span class="font-semibold text-slate-100">Skyline</span> in BO6 Ranked play.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Map Overview -->
+<section class="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-2 gap-8">
+  <div class="card">
+    <img src="/images/maps/Skyline-overview.jpg" alt="Skyline overhead map" class="rounded-2xl" />
+  </div>
+  <div class="space-y-8">
+    <div>
+      <h2 class="text-2xl font-bold text-sky-400">Power Positions</h2>
+      <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
+        <li>Top Laundry – AR anchor with full mid lane coverage</li>
+        <li>Open Stairs – mid control pivot point</li>
+        <li>Pool Headglitch – defensive anchor during P4</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-2xl font-bold text-sky-400">Common Rotations</h2>
+      <p class="mt-3 text-slate-300">Run a 2-1-1 split when rotating from P1 to P2, with one player cutting mid to stop early pushes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Set Plays -->
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <h2 class="text-3xl font-extrabold mb-6">Set Plays</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card">
+      <h3 class="font-semibold text-sky-400">Break P3</h3>
+      <p class="mt-2 text-slate-300">Send two up zig-zag stairs with stuns, one wraps driveway, and anchor floats mid cut.</p>
+    </div>
+    <div class="card">
+      <h3 class="font-semibold text-sky-400">Hold P5</h3>
+      <p class="mt-2 text-slate-300">Anchor holds basketball court, SMG duo controls kitchen push, flex watches open stairs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="mt-12">
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <p class="font-semibold text-slate-300">Unofficial fan project. Not affiliated with Activision or Treyarch.</p>
+    <p>© <span id="year"></span> COD Ranked Strats</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
