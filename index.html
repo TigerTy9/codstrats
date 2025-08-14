@@ -1,157 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>COD Ranked Strats – Pro Strategies</title>
-    <meta name="description" content="Pro-level strategies and playbooks for COD Ranked. Launching with Black Ops 6, then Warzone." />
-    <meta property="og:title" content="COD Ranked Strats – Pro Strategies" />
-    <meta property="og:description" content="Black Ops 6 ranked strats first. Warzone next. Support on Ko‑fi." />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#1c1c2e" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-    <script src="script.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COD Ranked Strats – Coming Soon</title>
+  <meta name="description" content="COD Ranked Strats: pro-level strategies, rotations, and playbooks. Black Ops 6 first, Warzone next. Support on Ko‑fi." />
+  <meta property="og:title" content="COD Ranked Strats – Coming Soon" />
+  <meta property="og:description" content="Black Ops 6 ranked strats first. Warzone next. Support on Ko‑fi." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+  <style>
+    :root { --ring: 0 0 0 4px rgba(14,165,233,.35); }
+    html, body { height: 100%; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
+    .glass { backdrop-filter: blur(12px); background: rgba(15, 23, 42, 0.6); }
+  </style>
 </head>
 <body>
+  <header class="header">
+    <div class="header-content">
+      <a href="#" class="logo">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-icon">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>COD Ranked Strats</span>
+      </a>
+      <nav class="nav">
+        <a href="#bo6">BO6 Guide First</a>
+        <a href="#warzone">Warzone Guide Next</a>
+        <a href="#donate">Donate</a>
+      </nav>
+    </div>
+  </header>
 
-    <header class="main-header">
-        <div class="header-content">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                    <line x1="12" y1="2" x2="12" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    <line x1="2" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    <line x1="18" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                COD Ranked Strats
-            </a>
-            <nav class="main-nav">
-                <a href="#bo6" class="nav-link">BO6 Guide</a>
-                <a href="#warzone" class="nav-link">Warzone Guide</a>
-                <a href="#support" class="nav-link">Support</a>
-            </nav>
+  <section class="hero">
+    <div class="hero-bg-graphic">
+      <svg aria-hidden="true" class="hero-bg-svg" width="1600" height="800" viewBox="0 0 1600 800" fill="none">
+        <defs>
+          <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 200) rotate(90) scale(600 900)">
+            <stop stop-color="#38bdf8"/>
+            <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1600" height="800" fill="url(#g)"></rect>
+      </svg>
+    </div>
+    <div class="hero-content-wrapper">
+      <div class="glass hero-card">
+        <p class="coming-soon-badge">Coming Soon</p>
+        <h1 class="hero-heading">
+          Pro-Level <span class="text-sky-400">Ranked Strats</span> for Call of Duty
+        </h1>
+        <p class="hero-subheading">We’re launching with a guide for<span class="hero-subheading-highlight">Black Ops 6 Ranked</span> first — maps, rotations, set plays, and comms scripts. <br class="br-sm-hidden"/>Then we'll expand to <span class="hero-subheading-highlight">Warzone</span>.</p>
+        <div class="hero-buttons">
+          <a href="#notify" class="button button-primary">Notify me at launch</a>
+          <a href="#donate" class="button button-secondary">Support on Ko‑fi</a>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-text-box">
-                    <p class="hero-status">✨ Coming Soon</p>
-                    <h1 class="hero-title">
-                        Pro-Level <span class="highlight">Strategies</span> for Call of Duty Ranked
-                    </h1>
-                    <p class="hero-subtitle">
-                        We're launching with a deep-dive guide for **Black Ops 6 Ranked**—including maps, rotations, and comms. Then, we'll expand to **Warzone**.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#newsletter" class="btn btn-primary">Notify me at launch</a>
-                        <a href="#support" class="btn btn-secondary">Support the project</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section class="highlights-section">
+    <div class="highlight-card">
+      <h3 class="highlight-title">Map Playbooks</h3>
+      <p class="highlight-text">Hardpoint rotations, Control lanes, S&D set hits. Visual callouts and break plans.</p>
+    </div>
+    <div class="highlight-card">
+      <h3 class="highlight-title">Roles & Comms</h3>
+      <p class="highlight-text">Anchor, Flex, Slayer, Support — with crisp comm scripts and reaction protocols.</p>
+    </div>
+    <div class="highlight-card">
+      <h3 class="highlight-title">Meta Updates</h3>
+      <p class="highlight-text">Patch-ready tactics and loadout notes. We adapt as the meta shifts.</p>
+    </div>
+  </section>
 
-        <section class="info-section">
-            <div class="info-container">
-                <div class="info-card">
-                    <h3>Map Playbooks</h3>
-                    <p>Detailed Hardpoint rotations, Control attack/defend lanes, and S&D set plays. Visual guides with clear callouts.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Role & Comms Guide</h3>
-                    <p>Learn to play your role—Anchor, Slayer, Support—with crisp communication scripts and situational protocols.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Dynamic Meta Updates</h3>
-                    <p>Stay ahead with tactics and loadout notes that adapt to every patch and new map. The meta evolves, and so do we.</p>
-                </div>
-            </div>
-        </section>
+  <section id="bo6" class="bo6-section">
+    <div class="bo6-content">
+      <div class="bo6-text-content">
+        <h2 class="bo6-heading">Black Ops 6 <span class="text-sky-400">First</span></h2>
+        <p class="bo6-text">Coverage for BO6 Ranked: spawn systems, power positions, utility lineups, and break/hold frameworks like the <em>2‑1‑1 Pressure Split</em>. Built for teams that want consistent wins.</p>
+        <ul class="bo6-list">
+          <li>Interactive map diagrams</li>
+          <li>Hardpoint & Control rotation planners</li>
+          <li>Search & Destroy set plays</li>
+        </ul>
+      </div>
+      <div class="bo6-image-card">
+        <h3 class="bo6-image-title">Sample Coming Soon</h3>
+        <p class="bo6-image-text">A clean, mobile-friendly guide layout with lane highlights, choke callouts, and recommended AR/SMG splits per map.</p>
+        <div class="bo6-image-placeholder-grid" aria-hidden="true">
+          <div class="bo6-image-placeholder"></div>
+          <div class="bo6-image-placeholder"></div>
+          <div class="bo6-image-placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <section id="bo6" class="content-section">
-            <div class="content-container">
-                <div class="content-text-box">
-                    <h2 class="content-title">Black Ops 6 <span class="highlight">First</span></h2>
-                    <p class="content-description">
-                        Our initial guide provides a complete framework for BO6 Ranked play. Master spawn manipulation, power positions, utility lineups, and advanced strategies like the **2-1-1 Pressure Split**. Built for teams serious about winning.
-                    </p>
-                    <ul class="content-list">
-                        <li>Interactive map diagrams</li>
-                        <li>Hardpoint & Control rotation planners</li>
-                        <li>Search & Destroy set plays</li>
-                    </ul>
-                </div>
-                <div class="content-placeholder">
-                    <div class="placeholder-card">
-                        <p class="placeholder-text">Sample content coming soon!</p>
-                        <div class="placeholder-grid">
-                            <div class="placeholder-item"></div>
-                            <div class="placeholder-item"></div>
-                            <div class="placeholder-item"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="warzone" class="warzone-section">
+    <div class="warzone-card">
+      <h2 class="warzone-heading">Warzone <span class="text-sky-400">Next</span></h2>
+      <p class="warzone-text">Rotation pathing, circle reads, regain playbooks, and teamfight protocols. We’re building a tournament-grade knowledge base after BO6 launches.</p>
+      <div class="warzone-tags">
+        <span class="warzone-tag">Regain Routes</span>
+        <span class="warzone-tag">Power Positions</span>
+        <span class="warzone-tag">Loadout Timing</span>
+        <span class="warzone-tag">Endgame Plays</span>
+      </div>
+    </div>
+  </section>
 
-        <section id="warzone" class="content-section">
-            <div class="content-container reverse">
-                <div class="content-text-box">
-                    <h2 class="content-title">Warzone <span class="highlight">Next</span></h2>
-                    <p class="content-description">
-                        After the BO6 launch, we'll bring the same level of detail to Warzone. Expect tournament-grade knowledge on rotation pathing, circle reads, regain playbooks, and endgame protocols to secure the win.
-                    </p>
-                    <div class="tag-container">
-                        <span class="tag">Regain Routes</span>
-                        <span class="tag">Power Positions</span>
-                        <span class="tag">Loadout Timing</span>
-                        <span class="tag">Endgame Plays</span>
-                    </div>
-                </div>
-                <div class="content-placeholder">
-                    <div class="placeholder-card">
-                        <p class="placeholder-text">Warzone guide in development</p>
-                        <div class="placeholder-map"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="notify" class="notify-section">
+    <div class="notify-grid">
+      <form class="notify-form" onsubmit="subscribe(event)">
+        <h3 class="notify-form-title">Get launch updates</h3>
+        <p class="notify-form-text">Drop your email and we’ll ping you when the site goes live.</p>
+        <label class="sr-only" for="email">Email address</label>
+        <div class="notify-input-group">
+          <input id="email" name="email" type="email" required placeholder="you@example.com" class="notify-input" />
+          <button type="submit" class="button button-primary notify-button">Notify me</button>
+        </div>
+        <p id="msg" class="notify-message" role="status" aria-live="polite"></p>
+        <p class="notify-disclaimer">We’ll never share your email. Local demo only — connect to your email provider later.</p>
+      </form>
 
-        <section id="newsletter" class="footer-cta">
-            <div class="cta-container">
-                <div class="cta-card">
-                    <h3>Get Launch Updates</h3>
-                    <p>Drop your email and we'll let you know the moment we go live.</p>
-                    <form class="cta-form">
-                        <input type="email" id="email-input" placeholder="you@example.com" required>
-                        <button type="submit" class="btn btn-primary">Notify Me</button>
-                    </form>
-                    <p class="form-message" id="form-msg" aria-live="polite"></p>
-                    <p class="form-note">Your email is safe with us. We'll never spam or share it.</p>
-                </div>
+      <div id="donate" class="donate-card">
+        <h3 class="donate-title">Support this project</h3>
+        <p class="donate-text">Like the mission? You can donate to help fund hosting, graphics, and development time.</p>
+        <a href="https://ko-fi.com/TigerTy9" target="_blank" rel="noopener" class="button button-kofi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6a1 1 0 0 0-1 1v4a7 7 0 0 0 7 7h3a7 7 0 0 0 7-7V7a1 1 0 0 0-1-1H3zm16 2v3a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5V8h13z"/></svg>
+          <span>Donate on Ko‑fi</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <div id="support" class="cta-card">
-                    <h3>Support the Project</h3>
-                    <p>Help fund development, hosting, and professional graphics by donating on Ko-fi.</p>
-                    <a href="https://ko-fi.com/TigerTy9" target="_blank" rel="noopener noreferrer" class="btn ko-fi-btn">
-                        <svg class="ko-fi-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 6a1 1 0 0 0-1 1v4a7 7 0 0 0 7 7h3a7 7 0 0 0 7-7V7a1 1 0 0 0-1-1H3zm16 2v3a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5V8h13z"/>
-                        </svg>
-                        Donate on Ko‑fi
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-note">Unofficial fan project. Not affiliated with Activision or Treyarch.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <span aria-hidden="true">•</span>
+        <a href="#">Terms</a>
+        <span aria-hidden="true">•</span>
+        <span>© <span id="year"></span> COD Ranked Strats</span>
+      </div>
+    </div>
+  </footer>
 
-    <footer class="main-footer">
-        <p>&copy; <span id="current-year"></span> COD Ranked Strats. Unofficial fan project. Not affiliated with Activision or Treyarch.</p>
-    </footer>
-
+  <script>
+    // demo email capture
+    function subscribe(e){
+      e.preventDefault();
+      const input = document.getElementById('email');
+      const msg = document.getElementById('msg');
+      const email = input.value.trim();
+      if(!email){ msg.textContent = 'Please enter a valid email.'; return; }
+      try{
+        localStorage.setItem('launch_email', email);
+        msg.textContent = 'Thanks! We\'ll let you know when we launch.';
+        input.value='';
+      }catch(err){
+        msg.textContent = 'Saved locally. Connect a real email service for production.';
+      }
+    }
+    // dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
