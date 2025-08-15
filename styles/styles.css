@@ -665,3 +665,8 @@ body {
 .footer-links a:hover {
   color: #e2e8f0;
 }
+
+.logo-image {
+  width: 64px; /* Sets the width to 64 pixels */
+  height: auto; /* Maintains the original aspect ratio */
+}
