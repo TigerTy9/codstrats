@@ -212,6 +212,12 @@ body {
   overflow: hidden;
 }
 
+.bo6-image-placeholder img {
+  width: 100%;
+  height: auto;
+  display: block; /* Prevents extra space below the image */
+}
+
 .hero-bg-graphic {
   position: absolute;
   inset: 0;

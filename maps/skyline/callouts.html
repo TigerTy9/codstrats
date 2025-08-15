@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyline Map Callouts</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column; /* Changed to column to stack header and map */
+            justify-content: flex-start; /* Aligns items to the top */
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0; /* Add padding to body */
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            width: 100%;
+            background: #222;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: fixed; /* Keep header at the top */
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            color: #ff0000;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #ff0000;
+        }
+        /* --- End of Header Styles --- */
+
+        .map-container {
+            position: relative;
+            max-width: 90vw;
+            width: 1200px;
+            margin-top: 100px; /* Adjust margin to account for fixed header */
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout-button {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .callout-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 0, 0, 0.9);
+        }
+
+        .callout-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s linear;
+            z-index: 1000;
+        }
+
+        .callout-popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 80vh;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .callout-overlay {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            white-space: nowrap;
+            transform: translate(-50%, -50%);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .callout-button {
+                padding: 5px;
+                font-size: 0.8em;
+            }
+            .popup-content {
+                padding: 10px;
+            }
+            .callout-overlay {
+                font-size: 1em;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-icon">
+                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>COD Ranked Strats</span>
+            </a>
+            <nav class="nav">
+                <a href="#bo6">BO6 Guide First</a>
+                <a href="#warzone">Warzone Guide Next</a>
+                <a href="#donate">Donate</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="map-container">
+        <img src="images/Skyline_MiniMap_BO6.webp" alt="Skyline Map Layout" class="map-image">
+
+        <button class="callout-button" data-callout="a-site" style="top: 25%; left: 15%;">A-Site</button>
+        <button class="callout-button" data-callout="mid" style="top: 32%; left: 48.8%;">Mid/P1</button>
+        <button class="callout-button" data-callout="" style="top: 40%; left: 31%;">P2</button>
+        <button class="callout-button" data-callout="b-site" style="top: 50%; left: 85%;">B-Site</button>
+        <button class="callout-button" data-callout="kitchen" style="top: 60%; left: 50%;">Kitchen</button>
+        <button class="callout-button" data-callout="alpha-spawn" style="top: 75%; left: 10%;">Alpha Spawn</button>
+        <button class="callout-button" data-callout="bravo-spawn" style="top: 25%; left: 90%;">Bravo Spawn</button>
+    </div>
+
+    <div id="callout-popup" class="callout-popup">
+        <div class="popup-content">
+            <button class="close-btn">&times;</button>
+            <img id="popup-image" src="" alt="Callout Screenshot">
+            <div id="overlays-container"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const calloutButtons = document.querySelectorAll('.callout-button');
+            const popup = document.getElementById('callout-popup');
+            const closeBtn = document.querySelector('.close-btn');
+            const popupImage = document.getElementById('popup-image');
+            const overlaysContainer = document.getElementById('overlays-container');
+
+            // Define your callout data here
+            const calloutData = {
+                'b-site': {
+                    image: 'images/cod-bo6-skyline-2-1080.jpg',
+                    overlays: [
+                        {
+                            text: 'Hedges',
+                            x: 27,
+                            y: 55
+                        },
+                        {
+                            text: 'Drop',
+                            x: 60,
+                            y: 40
+                        },
+                        {
+                            text: 'Stairs',
+                            x: 39,
+                            y: 45
+                        },
+                        {
+                            text: 'Firepit',
+                            x: 55,
+                            y: 55
+                        },
+                        {
+                            text: 'Umbrella',
+                            x: 77,
+                            y: 70
+                        }
+                    ]
+                },
+                'kitchen': {
+                    image: 'images/cod-bo6-skyline-5-1080.jpg',
+                    overlays: [
+                        {
+                            text: 'Bar',
+                            x: 60,
+                            y: 50
+                        },
+                        {
+                            text: 'Table',
+                            x: 80,
+                            y: 40
+                        },
+                        {
+                            text: 'Fireplace',
+                            x: 90,
+                            y: 80
+                        },
+                        {
+                            text: 'Fridges',
+                            x: 20,
+                            y: 50
+                        }
+                    ]
+                },
+                'mid': {
+                    image: 'images/cod-bo6-skyline-4-1080.jpg',
+                    overlays: [
+                        {
+                            text: 'Catwalk',
+                            x: 42,
+                            y: 35
+                        },
+                        {
+                            text: 'Piano Stairs',
+                            x: 80,
+                            y: 35
+                        },
+                        {
+                            text: 'Pool',
+                            x: 45,
+                            y: 60
+                        },
+                        {
+                            text: 'Hot Tub',
+                            x: 67,
+                            y: 66
+                        },
+                        {
+                            text: 'Hot Ladder',
+                            x: 81,
+                            y: 85
+                        },
+                        {
+                            text: 'Gym',
+                            x: 60,
+                            y: 49
+                        },
+                        {
+                            text: 'Grass',
+                            x: 20,
+                            y: 63
+                        }
+                    ]
+                },
+                // ... add more callout data with an 'overlays' array
+            };
+
+            // Open popup on button click
+            calloutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const calloutId = button.dataset.callout;
+                    const data = calloutData[calloutId];
+                    if (data) {
+                        // Clear any previous overlays
+                        overlaysContainer.innerHTML = '';
+
+                        popupImage.src = data.image;
+                        popupImage.alt = calloutId;
+
+                        // Create and append a div for each overlay
+                        data.overlays.forEach(overlay => {
+                            const overlayDiv = document.createElement('div');
+                            overlayDiv.className = 'callout-overlay';
+                            overlayDiv.textContent = overlay.text;
+                            overlayDiv.style.left = `${overlay.x}%`;
+                            overlayDiv.style.top = `${overlay.y}%`;
+                            overlaysContainer.appendChild(overlayDiv);
+                        });
+
+                        popup.classList.add('active');
+                    }
+                });
+            });
+
+            // Close popup on close button click or by clicking outside
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('active');
+            });
+
+            popup.addEventListener('click', (event) => {
+                if (event.target === popup) {
+                    popup.classList.remove('active');
+                }
+            });
+
+            // Close popup on Esc key press
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && popup.classList.contains('active')) {
+                    popup.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
